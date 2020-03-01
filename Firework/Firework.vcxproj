@@ -18,6 +18,27 @@
       <Platform>x64</Platform>
     </ProjectConfiguration>
   </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="..\..\..\..\..\..\Coding\glad\src\glad.c" />
+    <ClCompile Include="..\Class Definitions\particle_definition.cpp" />
+    <ClCompile Include="..\Class Definitions\particle_emitter_definition.cpp" />
+    <ClCompile Include="..\Class Definitions\program_definition.cpp" />
+    <ClCompile Include="..\Class Definitions\shader_definition.cpp" />
+    <ClCompile Include="..\Source\firework_main.cpp" />
+    <ClCompile Include="..\Source\init.cpp" />
+    <ClCompile Include="..\Source\init_window.cpp" />
+    <ClCompile Include="..\Source\render.cpp" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="..\Headers\firework_definition.h" />
+    <ClInclude Include="..\Headers\particle_class.h" />
+    <ClInclude Include="..\Headers\particle_emitter_class.h" />
+    <ClInclude Include="..\Headers\program_class.h" />
+    <ClInclude Include="..\Headers\shader_class.h" />
+  </ItemGroup>
+  <ItemGroup>
+    <ResourceCompile Include="Firework.rc" />
+  </ItemGroup>
   <PropertyGroup Label="Globals">
     <VCProjectVersion>15.0</VCProjectVersion>
     <ProjectGuid>{C4728E3A-4620-49AC-904A-307D68682DAA}</ProjectGuid>
@@ -69,7 +90,7 @@
     <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
   </ImportGroup>
   <PropertyGroup Label="UserMacros" />
-  <PropertyGroup />
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" />
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
     <ClCompile>
       <WarningLevel>Level3</WarningLevel>
@@ -77,6 +98,9 @@
       <SDLCheck>true</SDLCheck>
       <ConformanceMode>true</ConformanceMode>
     </ClCompile>
+    <Link>
+      <AdditionalDependencies>kernel32.lib;user32.lib;gdi32.lib;winspool.lib;comdlg32.lib;advapi32.lib;shell32.lib;ole32.lib;oleaut32.lib;uuid.lib;odbc32.lib;odbccp32.lib;glfw3.lib;opengl32.lib;glu32.lib;%(AdditionalDependencies)</AdditionalDependencies>
+    </Link>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
     <ClCompile>
@@ -114,8 +138,6 @@
       <OptimizeReferences>true</OptimizeReferences>
     </Link>
   </ItemDefinitionGroup>
-  <ItemGroup>
-  </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
   </ImportGroup>
