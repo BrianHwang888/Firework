@@ -20,6 +20,9 @@ public:
 
 	//Buffer funcutions
 	void generate_buffer();
+	void generate_vao_buffer(GLuint attrib_loc, GLint begin, GLenum type, GLint size);
+	void enable_vao(int attrib_loc);
+	void disable_vao(int attrib_loc);
 
 	//Rendering related functions
 	void Draw();

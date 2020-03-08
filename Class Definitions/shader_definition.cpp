@@ -2,12 +2,14 @@
 #include "..\Headers\shader_class.h"
 
 //Read source file
- char* Shader::read_shader_source(const char* filename){
-	FILE* fp = fopen(filename, "r");
+char* Shader::read_shader_source(const char* filename){
+	FILE* fp;
+	errno_t err = fopen_s(&fp, filename, "r");
 	long length;
 
 	if(fp == NULL){ 
 		fprintf(stderr, "Failed to read file %s\n", filename);
+		system("pause");
 		exit(EXIT_FAILURE); 
 	}
 	

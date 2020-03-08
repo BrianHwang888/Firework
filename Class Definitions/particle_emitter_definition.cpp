@@ -37,6 +37,20 @@ void particle_emitter::generate_buffer(){
 	glBufferSubData(GL_ARRAY_BUFFER, sizeof(part_vertices), sizeof(&part_vertices) + sizeof(part_color), part_color);
 };
 
+void particle_emitter::generate_vao_buffer(GLuint attrib_loc, GLint begin, GLenum type, GLint size) {
+	glGenBuffers(1, &particle_vao);
+	glBindVertexArray(particle_vao);
+	glVertexAttribPointer(begin, size, type, GL_FALSE, 0, (void*)attrib_loc);
+};
+
+void particle_emitter::enable_vao(int attrib_loc) {
+	glEnableVertexAttribArray(attrib_loc);
+};
+
+void particle_emitter::disable_vao(int attrib_loc) {
+	glDisableVertexAttribArray(attrib_loc);
+}
+
 void particle_emitter::Draw(){};
 
 void particle_emitter::Update(){};

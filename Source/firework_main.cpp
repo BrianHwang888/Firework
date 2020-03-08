@@ -10,7 +10,7 @@
 //Functions related to window
 void init_window(int option);
 void framebuffer_size_callback(GLFWwindow* window, int width, int height);
-void processInout(GLFWwindow* window);
+void processInput(GLFWwindow* window);
 GLFWwindow* create_window(const char* name, int width, int height);
 
 //Utility functions for OpenGL
@@ -25,12 +25,18 @@ int main(){
 	init_window(3);
 
 	/* Window Creation */
-	GLFWwindow* window = create_window("Firework", 800, 600);
+	GLFWwindow* window = glfwCreateWindow(800, 600, "Firework", NULL, NULL);
+	if (window == NULL) {
+		printf("Failed to create window/n");
+		system("pause");
+		return NULL;
+	}
 	glfwMakeContextCurrent(window);
 
 	/* GLAD Initialization (manages function pointers for OpenGL) */
 	if(!gladLoadGLLoader((GLADloadproc)glfwGetProcAddress)){
 		std::cout<< "Failed to initialize GLAD" << std::endl;
+		system("pause");
 		return -1;
 	}
 
@@ -40,8 +46,8 @@ int main(){
 	/* Setting window resize function */
 	glfwSetFramebufferSizeCallback(window, framebuffer_size_callback);
 
-	Shader vertex("vertex shader path", GL_VERTEX_SHADER);
-	Shader fragment("fragment shader path", GL_FRAGMENT_SHADER);
+	Shader vertex("Shaders\vFirework.glsl", GL_VERTEX_SHADER);
+	Shader fragment("Shaders\fFirework.glsl", GL_FRAGMENT_SHADER);
 	
 	Program firework_program(vertex.ID, fragment.ID);
 	firework_program.link();

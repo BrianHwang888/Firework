@@ -35,9 +35,14 @@
     <ClInclude Include="..\Headers\particle_emitter_class.h" />
     <ClInclude Include="..\Headers\program_class.h" />
     <ClInclude Include="..\Headers\shader_class.h" />
+    <ClInclude Include="resource.h" />
   </ItemGroup>
   <ItemGroup>
     <ResourceCompile Include="Firework.rc" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="..\Shaders\fFirework.glsl" />
+    <None Include="..\Shaders\vFirework.glsl" />
   </ItemGroup>
   <PropertyGroup Label="Globals">
     <VCProjectVersion>15.0</VCProjectVersion>

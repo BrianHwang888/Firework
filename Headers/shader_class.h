@@ -15,10 +15,10 @@ class Shader {
 	private:
 		const char* filename;
 		GLenum type;
-		GLchar* source_file;
+		char* source_file;
 		
 		char* read_shader_source(const char* filename);
 	
-}	
+};
 
 #endif
