@@ -2,7 +2,6 @@
 #include <GLFW/glfw3.h>
 #include <iostream>
 
-#include "..\Headers\firework_definition.h"
 #include "..\Headers\shader_class.h"
 #include "..\Headers\program_class.h"
 #include "..\Headers\particle_emitter_class.h"
@@ -55,6 +54,7 @@ int main(){
 	/* Setting window resize function */
 	glfwSetFramebufferSizeCallback(window, framebuffer_size_callback);
 
+	/* Shader and Program initialization */
 	Shader vertex("vertex_shader.glsl", GL_VERTEX_SHADER);
 	Shader fragment("fragment_shader.glsl", GL_FRAGMENT_SHADER);
 	Shader vertex_firework("vFirework.glsl", GL_VERTEX_SHADER);
