@@ -4,10 +4,10 @@ Floor::Floor(){
 	num_polygons = 2;
 	vertices = new glm::vec3[4];
 
-	vertices[0] = glm::vec3(1.0f, 0.0f, 1.0f);
-	vertices[1] = glm::vec3(1.0f, 0.0f, -1.0f);
-	vertices[2] = glm::vec3(-1.0f, 0.0f, -1.0f);
-	vertices[3] = glm::vec3(-1.0f, 0.0f, 1.0f);
+	vertices[0] = glm::vec3(5.0f, 0.0f, 8.0f);
+	vertices[1] = glm::vec3(5.0f, 0.0f, -4.0f);
+	vertices[2] = glm::vec3(-5.0f, 0.0f, -4.0f);
+	vertices[3] = glm::vec3(-5.0f, 0.0f, 8.0f);
 
 	indices = new unsigned int[6];
 	for (int i = 0; i < 3; i++) {
@@ -36,20 +36,20 @@ void Floor::read_floor_file(const char* filename){
 	}
 
 	//reads in the number of polygons the floor has
-	fscanf(fp, "%d", &num_polygons);
+	fscanf_s(fp, "%d", &num_polygons);
 	vertices = new glm::vec3[num_polygons * 3];
 	colors = new glm::vec4[num_polygons * 3];
 
 	for (int poly = 0; poly < num_polygons; poly++) {
 
 		//checking if vertex consist 3 elements (x/y/z values)
-		if (fscanf(fp, "%d", &vert_points) && vert_points == 3) {
+		if (fscanf_s(fp, "%d", &vert_points) && vert_points == 3) {
 			//reading vertices from file
 			for (int i = 0; i < 3; i++) {
 
-				fscanf(fp, "%f", &x);
-				fscanf(fp, "%f", &y);
-				fscanf(fp, "%f", &z);
+				fscanf_s(fp, "%f", &x);
+				fscanf_s(fp, "%f", &y);
+				fscanf_s(fp, "%f", &z);
 
 				vertices[index] = glm::vec3(x, y, z);
 				colors[index] = glm::vec4(0.25f, 0.25f, 0.25f, 0.65f);
@@ -75,18 +75,26 @@ void Floor::gen_buffer(){
 	glBufferSubData(GL_ARRAY_BUFFER, sizeof(vertices), sizeof(vertices) + sizeof(colors), &colors);		
 };
 
-void Floor::gen_vao_buffer(){
+void Floor::gen_vao_buffer(GLuint attrib_loc, GLint begin, GLenum type, GLint size){
 	glGenBuffers(1, &VAO);
 	glBindBuffer(GL_ARRAY_BUFFER, VAO);
+	glVertexAttribPointer(begin, size, type, GL_FALSE, 0, (void*)attrib_loc);
 };
 
-
-
-floor::floor()
-{
+void Floor::gen_ebo() {
+	glGenBuffers(1, &EBO);
+	glBindBuffer(GL_ARRAY_BUFFER, EBO);
+	glBufferData(GL_ELEMENT_ARRAY_BUFFER, sizeof(indices), indices, GL_STATIC_DRAW);
 }
 
+void Floor::enable_vao(GLuint attrib_loc) {
+	glEnableVertexAttribArray(attrib_loc);
+}
 
-floor::~floor()
-{
+void Floor::disable_vao(GLuint attrib_loc) {
+	glDisableVertexAttribArray(attrib_loc);
+}
+
+void Floor::draw() {
+	glDrawElements(GL_TRIANGLES, 6, GL_UNSIGNED_INT, 0);
 }

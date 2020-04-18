@@ -1,4 +1,3 @@
-
 #include "..\Headers\shader_class.h"
 
 //Read source file
@@ -20,6 +19,12 @@ char* Shader::read_shader_source(const char* filename){
 	char* buffer = new char[length + 1];
 	buffer[length] = '\0';
 	fclose(fp);
+
+	for (int i = 0; i < length + 1; i++)
+	{
+		if (!(buffer[i] >= 0 && buffer[i] < 128))
+			buffer[i] = ' ';
+	}
 
 	return buffer;
 };
@@ -54,7 +59,6 @@ Shader::Shader(const char* shader_file, GLenum shader_type) : filename(shader_fi
 //destructor
 Shader::~Shader(){
 	glDeleteShader(ID);
-	delete filename;
 	delete [] source_file;
 
 };

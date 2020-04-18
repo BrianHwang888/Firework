@@ -6,6 +6,11 @@
 #include "..\Headers\shader_class.h"
 #include "..\Headers\program_class.h"
 #include "..\Headers\particle_emitter_class.h"
+#include "..\Headers\Floor_class.h"
+
+//OpenGL Programs
+Program* basic_program;
+Program* firework_program;
 
 //Functions related to window
 void init_window(int option);
@@ -16,6 +21,10 @@ GLFWwindow* create_window(const char* name, int width, int height);
 //Utility functions for OpenGL
 void init();
 void render();
+
+//Rendering Objects
+particle_emitter* firework;
+Floor* test_floor;
 
 int main(){
 
@@ -46,20 +55,25 @@ int main(){
 	/* Setting window resize function */
 	glfwSetFramebufferSizeCallback(window, framebuffer_size_callback);
 
-	Shader vertex("Shaders\vFirework.glsl", GL_VERTEX_SHADER);
-	Shader fragment("Shaders\fFirework.glsl", GL_FRAGMENT_SHADER);
-	
-	Program firework_program(vertex.ID, fragment.ID);
-	firework_program.link();
+	Shader vertex("vertex_shader.glsl", GL_VERTEX_SHADER);
+	Shader fragment("fragment_shader.glsl", GL_FRAGMENT_SHADER);
+	Shader vertex_firework("vFirework.glsl", GL_VERTEX_SHADER);
+	Shader fragment_firework("fFirework.glsl", GL_FRAGMENT_SHADER);
+
+	basic_program = new Program (vertex.ID, fragment.ID);
+	firework_program = new Program (vertex_firework.ID, fragment_firework.ID);
+
+	basic_program->link();
+	firework_program->link();
 	
 
-	delete &vertex;
-	delete &fragment;
+	//delete &vertex;
+	//delete &fragment;
 	
-	particle_emitter firework(300);
+	firework = new particle_emitter(300);
+	test_floor = new Floor();
 
 	init();
-	firework_program.use();
 
 	while(!glfwWindowShouldClose(window)){
 

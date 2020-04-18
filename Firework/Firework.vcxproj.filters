@@ -13,6 +13,9 @@
       <UniqueIdentifier>{67DA6AB6-F800-4c08-8B7A-83BB121AAD01}</UniqueIdentifier>
       <Extensions>rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx;tiff;tif;png;wav;mfcribbon-ms</Extensions>
     </Filter>
+    <Filter Include="Shaders">
+      <UniqueIdentifier>{86375dce-5f24-4355-b3f4-d9b10f0b22a7}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="..\..\..\..\..\..\Coding\glad\src\glad.c">
@@ -68,6 +71,9 @@
     <ClInclude Include="..\Headers\Floor_class.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="init.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ResourceCompile Include="Firework.rc">
@@ -75,11 +81,17 @@
     </ResourceCompile>
   </ItemGroup>
   <ItemGroup>
-    <None Include="..\Shaders\fFirework.glsl">
-      <Filter>Source Files</Filter>
-    </None>
     <None Include="..\Shaders\vFirework.glsl">
-      <Filter>Source Files</Filter>
+      <Filter>Shaders</Filter>
+    </None>
+    <None Include="..\Shaders\fFirework.glsl">
+      <Filter>Shaders</Filter>
+    </None>
+    <None Include="vertex_shader.glsl">
+      <Filter>Shaders</Filter>
+    </None>
+    <None Include="fragment_shader.glsl">
+      <Filter>Shaders</Filter>
     </None>
   </ItemGroup>
 </Project>

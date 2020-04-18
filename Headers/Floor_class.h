@@ -19,22 +19,16 @@ class Floor {
 		unsigned int* indices;
 		int num_polygons;
 		
-		void gen_buffer();
-		void gen_vao_buffer();
-		void gen_ebo();
-
 	public:
 		Floor();
 		Floor(const char* filename);
 		void read_floor_file(const char* filename);
-
-};
-
-class floor
-{
-public:
-	floor();
-	~floor();
+		void gen_buffer();
+		void gen_vao_buffer(GLuint attrib_loc, GLint begin, GLenum type, GLint size);
+		void gen_ebo();
+		void enable_vao(GLuint attrib_loc);
+		void disable_vao(GLuint attrib_loc);
+		void draw();
 };
 
 #endif
