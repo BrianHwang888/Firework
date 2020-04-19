@@ -5,9 +5,7 @@
 void render(){
 	
 	glClearColor(0.529f, 0.807f, 0.92f, 1.0f);
-	basic_program->use();
-	display();
-
-	test_floor->draw();
 	glClear(GL_COLOR_BUFFER_BIT);
+	display();
+	test_floor->draw(basic_program->ID);
 };

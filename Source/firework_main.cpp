@@ -66,6 +66,9 @@ int main(){
 	basic_program->link();
 	firework_program->link();
 	
+	GLuint vao;
+	glGenVertexArrays(1, &vao);
+	glBindVertexArray(vao);
 
 	//delete &vertex;
 	//delete &fragment;

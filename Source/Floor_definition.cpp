@@ -14,6 +14,9 @@ Floor::Floor(){
 		indices[i] = i;
 		indices[i + 3] = i + 1;
 	}
+
+	for(int i = 0; i < (size_t)sizeof(colors) / sizeof(glm::vec4); i++)
+		colors[i] = glm::vec4(1.0f, 0.0f, 1.0f, 1.0f);
 };
 
 Floor::Floor(const char* filename){
@@ -65,6 +68,7 @@ void Floor::read_floor_file(const char* filename){
 	}
 };
 
+//Generates floor buffer with vertex position data followed by color data
 void Floor::gen_buffer(){
 	glGenBuffers(1, &floor_buffer);
 	glBindBuffer(GL_ARRAY_BUFFER, floor_buffer);
@@ -75,18 +79,6 @@ void Floor::gen_buffer(){
 	glBufferSubData(GL_ARRAY_BUFFER, sizeof(vertices), sizeof(vertices) + sizeof(colors), &colors);		
 };
 
-void Floor::gen_vao_buffer(GLuint attrib_loc, GLint begin, GLenum type, GLint size){
-	glGenBuffers(1, &VAO);
-	glBindBuffer(GL_ARRAY_BUFFER, VAO);
-	glVertexAttribPointer(begin, size, type, GL_FALSE, 0, (void*)attrib_loc);
-};
-
-void Floor::gen_ebo() {
-	glGenBuffers(1, &EBO);
-	glBindBuffer(GL_ARRAY_BUFFER, EBO);
-	glBufferData(GL_ELEMENT_ARRAY_BUFFER, sizeof(indices), indices, GL_STATIC_DRAW);
-}
-
 void Floor::enable_vao(GLuint attrib_loc) {
 	glEnableVertexAttribArray(attrib_loc);
 }
@@ -95,6 +87,20 @@ void Floor::disable_vao(GLuint attrib_loc) {
 	glDisableVertexAttribArray(attrib_loc);
 }
 
-void Floor::draw() {
-	glDrawElements(GL_TRIANGLES, 6, GL_UNSIGNED_INT, 0);
+//draws floor; Assumes location 0 is vertex position and 1 is color data
+void Floor::draw(GLuint program) {
+	glUseProgram(program);
+	glBindBuffer(GL_ARRAY_BUFFER, floor_buffer);
+
+	//Vertex position data
+	enable_vao(0);
+	glVertexAttribPointer(0, 3, GL_FLOAT, GL_FALSE, 0, (void*)0);
+	
+	//Color data
+	enable_vao(1);
+	glVertexAttribPointer(0, 4, GL_FLOAT, GL_FALSE, 0, (void*)(sizeof(glm::vec3) * num_polygons * 3));
+	
+	glDrawArrays(GL_TRIANGLES, 0, 3 * num_polygons);
+	disable_vao(0);
+	disable_vao(1);
 }
