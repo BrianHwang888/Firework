@@ -12,12 +12,11 @@ class Floor {
 	protected:
 		glm::vec3* vertices;
 		glm::vec4* colors;
-		GLuint floor_buffer;
-		GLuint EBO;
-		
-		unsigned int* indices;
-		int num_polygons;
-		
+
+		GLuint VBO;
+		GLuint VAO;
+
+		int vertex_count;
 	public:
 		Floor();
 		Floor(const char* filename);

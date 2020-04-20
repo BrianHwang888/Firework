@@ -67,11 +67,8 @@ int main(){
 	firework_program->link();
 	
 	GLuint vao;
-	glGenVertexArrays(1, &vao);
+	glGenBuffers(1, &vao);
 	glBindVertexArray(vao);
-
-	//delete &vertex;
-	//delete &fragment;
 	
 	firework = new particle_emitter(300);
 	test_floor = new Floor();
