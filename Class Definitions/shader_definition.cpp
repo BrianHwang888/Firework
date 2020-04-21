@@ -36,6 +36,8 @@ Shader::Shader(const char* shader_file, GLenum shader_type) : filename(shader_fi
 	source_file = read_shader_source(filename);
 	printf("Success\n");
 
+
+	type = shader_type;
 	ID = glCreateShader(type);
 	glShaderSource(ID, 1, (const GLchar**) &source_file, NULL);
 	glCompileShader(ID);
@@ -55,11 +57,3 @@ Shader::Shader(const char* shader_file, GLenum shader_type) : filename(shader_fi
 		exit(EXIT_FAILURE);
 	}
 };
-
-//destructor
-Shader::~Shader(){
-	glDeleteShader(ID);
-	delete [] source_file;
-
-};
-

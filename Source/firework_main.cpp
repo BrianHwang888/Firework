@@ -1,79 +1,55 @@
 #include <glad/glad.h>
 #include <GLFW/glfw3.h>
-#include <iostream>
 
+#include "..\Firework\init.h"
+#include "..\Headers\init_window.h"
 #include "..\Headers\shader_class.h"
 #include "..\Headers\program_class.h"
 #include "..\Headers\particle_emitter_class.h"
 #include "..\Headers\Floor_class.h"
-
-//OpenGL Programs
-Program* basic_program;
-Program* firework_program;
-
-//Functions related to window
-void init_window(int option);
-void framebuffer_size_callback(GLFWwindow* window, int width, int height);
-void processInput(GLFWwindow* window);
-GLFWwindow* create_window(const char* name, int width, int height);
-
-//Utility functions for OpenGL
-void init();
-void render();
-
-//Rendering Objects
-particle_emitter* firework;
-Floor* test_floor;
+#include "..\Headers\render.h"
 
 int main(){
 
-	glfwInit();
-	
-	/* Window Initialization */
+	/* Window Initialization; Definition found in init_window */
 	init_window(3);
 
-	/* Window Creation */
-	GLFWwindow* window = glfwCreateWindow(800, 600, "Firework", NULL, NULL);
+	/* Window Creation Definition found in init_window*/
+	//GLFWwindow* window = glfwCreateWindow(800, 600, "Firework", NULL, NULL);
+	GLFWwindow* window = create_window("Firework", 800, 600);
 	if (window == NULL) {
 		printf("Failed to create window/n");
-		system("pause");
-		return NULL;
+		glfwTerminate();
+		return -1;
 	}
 	glfwMakeContextCurrent(window);
 
+	/* Setting window resize function; Definition found in init_window */
+	glfwSetFramebufferSizeCallback(window, framebuffer_size_callback);
+
 	/* GLAD Initialization (manages function pointers for OpenGL) */
 	if(!gladLoadGLLoader((GLADloadproc)glfwGetProcAddress)){
-		std::cout<< "Failed to initialize GLAD" << std::endl;
-		system("pause");
+		printf("Failed to initialize GLAD");
 		return -1;
 	}
 
-	/* Viewport Initialization */
-	glViewport(0, 0, 800, 600);
-	
-	/* Setting window resize function */
-	glfwSetFramebufferSizeCallback(window, framebuffer_size_callback);
+	/* SHADER INITIALIZATION */
+	//Shader vertex("vertex_shader.glsl", GL_VERTEX_SHADER);
+	//Shader fragment("fragment_shader.glsl", GL_FRAGMENT_SHADER);
+	//Shader vertex_firework("vFirework.glsl", GL_VERTEX_SHADER);
+	//Shader fragment_firework("fFirework.glsl", GL_FRAGMENT_SHADER);
 
-	/* Shader and Program initialization */
-	Shader vertex("vertex_shader.glsl", GL_VERTEX_SHADER);
-	Shader fragment("fragment_shader.glsl", GL_FRAGMENT_SHADER);
-	Shader vertex_firework("vFirework.glsl", GL_VERTEX_SHADER);
-	Shader fragment_firework("fFirework.glsl", GL_FRAGMENT_SHADER);
+	///* PROGRAM INITIALIZATION */
+	//Program basic_program(vertex.ID, fragment.ID);
+	//Program firework_program(vertex_firework.ID, fragment_firework.ID);
 
-	basic_program = new Program (vertex.ID, fragment.ID);
-	firework_program = new Program (vertex_firework.ID, fragment_firework.ID);
+	///* RENDERING INITIALIZATION */
+	//basic_program.link();
+	//firework_program.link();
 
-	basic_program->link();
-	firework_program->link();
-	
-	GLuint vao;
-	glGenBuffers(1, &vao);
-	glBindVertexArray(vao);
-	
-	firework = new particle_emitter(300);
-	test_floor = new Floor();
-
-	init();
+	/* Objects to be rendered*/
+	//particle_emitter firework(300);
+	//Floor test_floor;
 
 	while(!glfwWindowShouldClose(window)){
 
@@ -81,24 +57,13 @@ int main(){
 		processInput(window);
 
 		//Rendering
-		render();
+		//render(&basic_program, &firework_program);
 
 		//check and call events; then swap buffers
 		glfwSwapBuffers(window);
 		glfwPollEvents();
 	}
+
 	glfwTerminate();
 	return 0;
-}
-
-void framebuffer_size_callback(GLFWwindow* window, int width, int height){
-	glViewport(0, 0, width, height);
-
-}
-
-//Closes window when "ESC" key pressed
-void processInput(GLFWwindow* window){
-	if(glfwGetKey(window, GLFW_KEY_ESCAPE == GLFW_PRESS)){
-		glfwSetWindowShouldClose(window, true);
-	}
 }

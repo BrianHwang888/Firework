@@ -10,7 +10,6 @@ class Shader {
 	public:
 		GLuint ID;
 		Shader(const char* shader_file, GLenum shader_type);
-		~Shader();
 
 	private:
 		const char* filename;

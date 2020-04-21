@@ -33,9 +33,11 @@
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\Headers\Floor_class.h" />
+    <ClInclude Include="..\Headers\init_window.h" />
     <ClInclude Include="..\Headers\particle_class.h" />
     <ClInclude Include="..\Headers\particle_emitter_class.h" />
     <ClInclude Include="..\Headers\program_class.h" />
+    <ClInclude Include="..\Headers\render.h" />
     <ClInclude Include="..\Headers\shader_class.h" />
     <ClInclude Include="display.h" />
     <ClInclude Include="init.h" />

@@ -1,16 +1,13 @@
 #ifndef __DISPLAY_H__
 #define __DISPLAY_H__
+
 #include <glad/glad.h>
 #include <GLFW/glfw3.h>
 #include <glm/common.hpp>
 #include <glm/gtc/matrix_transform.hpp>
 #include <glm/gtc/type_ptr.hpp>
 
-#include "..\Headers\program_class.h"
-
-//program used 
-extern Program* basic_program;
-extern Program* firework_program;
+#include "init.h"
 
 extern GLuint model_view; //model-view matrix uniform shader variable location
 extern GLuint projection; //projection matrix uniform shader variable location
