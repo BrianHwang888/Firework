@@ -1,6 +1,9 @@
 # Firework
+Things Done:
+	- Fixed access violation; was in Floor class definition not in shader & program class
 
 Things to Do:
 
-	- Redo shader & program class;causes access violation 
 	- Seperate position and color data in floor class
+ 	- Implement matrices for projection, view, and model
+	- Implement camera class 
