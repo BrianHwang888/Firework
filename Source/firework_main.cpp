@@ -34,22 +34,22 @@ int main(){
 	}
 
 	/* SHADER INITIALIZATION */
-	//Shader vertex("vertex_shader.glsl", GL_VERTEX_SHADER);
-	//Shader fragment("fragment_shader.glsl", GL_FRAGMENT_SHADER);
-	//Shader vertex_firework("vFirework.glsl", GL_VERTEX_SHADER);
-	//Shader fragment_firework("fFirework.glsl", GL_FRAGMENT_SHADER);
+	Shader vertex("vertex_shader.glsl", GL_VERTEX_SHADER);
+	Shader fragment("fragment_shader.glsl", GL_FRAGMENT_SHADER);
+	Shader vertex_firework("vFirework.glsl", GL_VERTEX_SHADER);
+	Shader fragment_firework("fFirework.glsl", GL_FRAGMENT_SHADER);
 
-	///* PROGRAM INITIALIZATION */
-	//Program basic_program(vertex.ID, fragment.ID);
-	//Program firework_program(vertex_firework.ID, fragment_firework.ID);
+	/* PROGRAM INITIALIZATION */
+	Program basic_program(vertex.ID, fragment.ID);
+	Program firework_program(vertex_firework.ID, fragment_firework.ID);
 
-	///* RENDERING INITIALIZATION */
-	//basic_program.link();
-	//firework_program.link();
+	/* RENDERING INITIALIZATION */
+	basic_program.link();
+	firework_program.link();
 
 	/* Objects to be rendered*/
-	//particle_emitter firework(300);
-	//Floor test_floor;
+	particle_emitter firework(300);
+	Floor test_floor;
 
 	while(!glfwWindowShouldClose(window)){
 

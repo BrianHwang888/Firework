@@ -66,6 +66,7 @@ void Floor::read_floor_file(const char* filename){
 
 //Generates floor buffer with vertex position data followed by color data
 void Floor::gen_buffer(){
+	glfwInit();
 	glGenVertexArrays(1, &VAO);
 	glGenBuffers(1, &VBO);
 
