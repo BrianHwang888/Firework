@@ -8,7 +8,6 @@ particle_emitter::particle_emitter() {
 	for(int i = 0; i < num_particles; i++)
 		particles[i] = particle();
 	
-		
 };
 
 particle_emitter::particle_emitter(int num_part){

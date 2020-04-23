@@ -2,7 +2,7 @@
 
 Floor::Floor() {
 	vertex_count = 6;
-	vertices = new glm::vec3[4];
+	vertices = new glm::vec3[6];
 	colors = new glm::vec4[vertex_count];
 
 	vertices[0] = glm::vec3(0.5f, 0.5f, 0.0f);
@@ -66,7 +66,6 @@ void Floor::read_floor_file(const char* filename){
 
 //Generates floor buffer with vertex position data followed by color data
 void Floor::gen_buffer(){
-	glfwInit();
 	glGenVertexArrays(1, &VAO);
 	glGenBuffers(1, &VBO);
 

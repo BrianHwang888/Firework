@@ -1,5 +1,7 @@
 #include <glad/glad.h>
 #include <GLFW/glfw3.h>
+#include <stdio.h>
+#include <stddef.h>
 
 #include "..\Firework\init.h"
 #include "..\Headers\init_window.h"
@@ -9,14 +11,19 @@
 #include "..\Headers\Floor_class.h"
 #include "..\Headers\render.h"
 
+void framebuffer_size_callback(GLFWwindow* window, int width, int height);
+void processInput(GLFWwindow* window);
+
 int main(){
+
+	glfwInit();
 
 	/* Window Initialization; Definition found in init_window */
 	init_window(3);
 
 	/* Window Creation Definition found in init_window*/
-	//GLFWwindow* window = glfwCreateWindow(800, 600, "Firework", NULL, NULL);
-	GLFWwindow* window = create_window("Firework", 800, 600);
+	GLFWwindow* window = glfwCreateWindow(800, 600, "Firework", NULL, NULL);
+
 	if (window == NULL) {
 		printf("Failed to create window/n");
 		glfwTerminate();
@@ -42,6 +49,7 @@ int main(){
 	/* PROGRAM INITIALIZATION */
 	Program basic_program(vertex.ID, fragment.ID);
 	Program firework_program(vertex_firework.ID, fragment_firework.ID);
+	Program* program_array[2] = { &basic_program, &firework_program };
 
 	/* RENDERING INITIALIZATION */
 	basic_program.link();
@@ -50,18 +58,23 @@ int main(){
 	/* Objects to be rendered*/
 	particle_emitter firework(300);
 	Floor test_floor;
-
+	
+	init(&firework, &test_floor);
 	while(!glfwWindowShouldClose(window)){
 
 		//Process inputs
 		processInput(window);
 
 		//Rendering
-		//render(&basic_program, &firework_program);
+		render(program_array, firework, test_floor);
 
 		//check and call events; then swap buffers
 		glfwSwapBuffers(window);
 		glfwPollEvents();
+		int error = glfwGetError(NULL);
+		if (error != GLFW_NO_ERROR) {
+			printf("Error: %d\n", error);
+		}
 	}
 
 	glfwTerminate();

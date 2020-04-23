@@ -7,8 +7,8 @@
 #include "..\Headers\Floor_class.h"
 
 
-/* Shader and Program initialization */
-void init(Program* basic_pro, Program* firework_pro);
+/* Rendering objects initialization */
+void init(particle_emitter* firework, Floor* floor);
 
 #endif
 

@@ -6,9 +6,6 @@
 
 
 /* RENDERING FUNCTIONS */
-extern particle_emitter* firework;
-extern Floor* test_floor;
-
-void render(Program* basic_program, Program* firework_program);
+void render(Program** program_array, particle_emitter firework, Floor test_floor);
 
 #endif // !__RENDER_H__

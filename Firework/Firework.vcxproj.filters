@@ -21,7 +21,7 @@
     <ClCompile Include="..\..\..\..\..\..\Coding\glad\src\glad.c">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="..\Class Definitions\shader_definition.cpp">
+    <ClCompile Include="..\Source\firework_main.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="..\Class Definitions\particle_definition.cpp">
@@ -30,10 +30,16 @@
     <ClCompile Include="..\Class Definitions\particle_emitter_definition.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="..\Source\firework_main.cpp">
+    <ClCompile Include="..\Class Definitions\program_definition.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="..\Class Definitions\program_definition.cpp">
+    <ClCompile Include="..\Class Definitions\shader_definition.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Source\init_window.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Source\Floor_definition.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="..\Source\init.cpp">
@@ -42,19 +48,13 @@
     <ClCompile Include="..\Source\render.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="..\Source\Floor_definition.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
     <ClCompile Include="..\Source\display.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="..\Source\init_window.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="..\Headers\shader_class.h">
-      <Filter>Header Files</Filter>
+    <ClInclude Include="resource.h">
+      <Filter>Resource Files</Filter>
     </ClInclude>
     <ClInclude Include="..\Headers\particle_class.h">
       <Filter>Header Files</Filter>
@@ -65,8 +65,11 @@
     <ClInclude Include="..\Headers\program_class.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="resource.h">
-      <Filter>Resource Files</Filter>
+    <ClInclude Include="..\Headers\shader_class.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Headers\init_window.h">
+      <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="..\Headers\Floor_class.h">
       <Filter>Header Files</Filter>
@@ -74,13 +77,10 @@
     <ClInclude Include="init.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="display.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
     <ClInclude Include="..\Headers\render.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="..\Headers\init_window.h">
+    <ClInclude Include="display.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>

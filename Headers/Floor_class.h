@@ -4,9 +4,10 @@
 #include <stdio.h>
 #include <stddef.h>
 
-#include <glm/common.hpp>
+
 #include <glad/glad.h>
 #include <GLFW/glfw3.h>
+#include <glm/common.hpp>
 
 class Floor {
 	protected:
@@ -20,6 +21,7 @@ class Floor {
 	public:
 		Floor();
 		Floor(const char* filename);
+
 		void read_floor_file(const char* filename);
 		void gen_buffer();
 		void enable_vao(GLuint attrib_loc);

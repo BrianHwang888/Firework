@@ -1,13 +1,14 @@
 #include "..\Firework\init.h"
 
 
-//initialization of firework program
-void init(Program* basic_pro, Program* firework_pro) {
-
+//initialization of rendering objects
+void init(particle_emitter* firework, Floor* floor) {
+	
 	/*Generating buffer for firework*/
-	/*firework->generate_buffer();
+	firework->generate_buffer();
 	firework->generate_vao_buffer(0, 0, GL_FLOAT, 3);
-	firework->generate_vao_buffer(1, firework->num_particles * sizeof(glm::vec3), GL_FLOAT, GL_RGBA);*/
+	firework->generate_vao_buffer(1, firework->num_particles * sizeof(glm::vec3), GL_FLOAT, GL_RGBA);
 
-	//test_floor->gen_buffer();
+	floor->gen_buffer();
 }
+
