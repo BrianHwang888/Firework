@@ -14,8 +14,10 @@ class Floor {
 		glm::vec3* vertices;
 		glm::vec4* colors;
 
-		GLuint VBO;
+		GLuint floor_vertices_data;
+		GLuint floor_fragment_data;
 		GLuint VAO;
+		GLuint VAO2;
 
 		int vertex_count;
 	public:
@@ -23,7 +25,7 @@ class Floor {
 		Floor(const char* filename);
 
 		void read_floor_file(const char* filename);
-		void gen_buffer();
+		void gen_buffer(GLuint program);
 		void enable_vao(GLuint attrib_loc);
 		void disable_vao(GLuint attrib_loc);
 		void draw(GLuint program);

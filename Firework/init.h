@@ -8,7 +8,7 @@
 
 
 /* Rendering objects initialization */
-void init(particle_emitter* firework, Floor* floor);
+void init(Program** program_array, particle_emitter* firework, Floor* floor);
 
 #endif
 

@@ -48,18 +48,18 @@ int main(){
 
 	/* PROGRAM INITIALIZATION */
 	Program basic_program(vertex.ID, fragment.ID);
-	Program firework_program(vertex_firework.ID, fragment_firework.ID);
-	Program* program_array[2] = { &basic_program, &firework_program };
-
+	//Program firework_program(vertex_firework.ID, fragment_firework.ID);
+	//Program* program_array[2] = { &basic_program, &firework_program };
+	Program* program_array[1] = { &basic_program };
 	/* RENDERING INITIALIZATION */
 	basic_program.link();
-	firework_program.link();
+	//firework_program.link();
 
 	/* Objects to be rendered*/
 	particle_emitter firework(300);
 	Floor test_floor;
 	
-	init(&firework, &test_floor);
+	init(program_array, &firework, &test_floor);
 	while(!glfwWindowShouldClose(window)){
 
 		//Process inputs

@@ -11,4 +11,5 @@ void render(Program** program_array, particle_emitter firework, Floor test_floor
 	glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
 	display();
 	test_floor.draw(program_array[0]->ID);
+
 };

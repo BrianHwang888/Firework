@@ -42,6 +42,7 @@
     <ClInclude Include="display.h" />
     <ClInclude Include="init.h" />
     <ClInclude Include="resource.h" />
+    <ClInclude Include="vertex.h" />
   </ItemGroup>
   <ItemGroup>
     <ResourceCompile Include="Firework.rc" />

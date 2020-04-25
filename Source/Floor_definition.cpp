@@ -2,7 +2,7 @@
 
 Floor::Floor() {
 	vertex_count = 6;
-	vertices = new glm::vec3[6];
+	vertices = new glm::vec3[vertex_count];
 	colors = new glm::vec4[vertex_count];
 
 	vertices[0] = glm::vec3(0.5f, 0.5f, 0.0f);
@@ -15,6 +15,10 @@ Floor::Floor() {
 	
 	for (int i = 0; i < vertex_count; i++) 
 		colors[i] = glm::vec4(1.0f, 0.0f, 1.0f, 1.0f);
+
+	/*for (int i = 0; i < vertex_count; i++) {
+		printf("Vertex %d: %f, %f, %f\nColor %d: %f, %f, %f, %f\n", i, vertices[i].x, vertices[i].y, vertices[i].z, i, colors[i].r, colors[i].g, colors[i].b, colors[i].a);
+	}*/
 }
 
 Floor::Floor(const char* filename){
@@ -65,25 +69,26 @@ void Floor::read_floor_file(const char* filename){
 };
 
 //Generates floor buffer with vertex position data followed by color data
-void Floor::gen_buffer(){
+void Floor::gen_buffer(GLuint program){
 	glGenVertexArrays(1, &VAO);
-	glGenBuffers(1, &VBO);
+	glGenBuffers(1, &floor_vertices_data);
 
 	glBindVertexArray(VAO);
 
-	glBindBuffer(GL_ARRAY_BUFFER, VBO);
+	glBindBuffer(GL_ARRAY_BUFFER, floor_vertices_data);
 	glBufferData(GL_ARRAY_BUFFER, vertex_count * (sizeof(glm::vec3) +  sizeof(glm::vec4)), NULL, GL_STATIC_DRAW);
 	glBufferSubData(GL_ARRAY_BUFFER, 0, vertex_count * sizeof(glm::vec3), vertices);
 	glBufferSubData(GL_ARRAY_BUFFER, vertex_count * sizeof(glm::vec3), sizeof(glm::vec4) * vertex_count, colors);
 	
+	GLuint vertex_position = glGetAttribLocation(program, "vPosition");
 	enable_vao(0);
-	glVertexAttribPointer(0, 3, GL_FLOAT, GL_FALSE, 0, (void*)0);
+	glVertexAttribPointer(0, 3, GL_FLOAT, GL_FALSE, sizeof(glm::vec3), (void*)0);
 
-	
+	GLuint vertex_color = glGetAttribLocation(program, "vColor");
 	enable_vao(1);
-	glVertexAttribPointer(1, 4, GL_FLOAT, GL_FALSE, 0, (void*)(vertex_count * sizeof(glm::vec3)));
+	glVertexAttribPointer(1, 4, GL_FLOAT, GL_FALSE, sizeof(glm::vec4), (void*)(vertex_count * sizeof(glm::vec3)));
 
-	glBindVertexArray(0);
+	printf("%d , %d\n", vertex_position, vertex_color);
 };
 
 void Floor::enable_vao(GLuint attrib_loc) {
@@ -97,9 +102,6 @@ void Floor::disable_vao(GLuint attrib_loc) {
 //draws floor; Assumes location 0 is vertex position and 1 is color data
 void Floor::draw(GLuint program) {
 	glUseProgram(program);
-
 	glBindVertexArray(VAO);
-
-	glDrawArrays(GL_TRIANGLES, 0, 6);
-	glBindVertexArray(0);
+	glDrawArrays(GL_TRIANGLES, 0, vertex_count);
 }
