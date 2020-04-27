@@ -11,12 +11,13 @@ char* Shader::read_shader_source(const char* filename){
 		system("pause");
 		exit(EXIT_FAILURE); 
 	}
-	
+	printf("Successfully read %s\n", filename);
 	fseek(fp, 0L, SEEK_END);
 	length = ftell(fp);
 	
 	fseek(fp, 0L, SEEK_SET);
 	char* buffer = new char[length + 1];
+	fread(buffer, 1, length, fp);
 	buffer[length] = '\0';
 	fclose(fp);
 
@@ -34,11 +35,9 @@ Shader::Shader(const char* shader_file, GLenum shader_type) : filename(shader_fi
 
 	printf("Attempting to read: %s\n", filename);
 	source_file = read_shader_source(filename);
-	printf("Success\n");
 
-
-	type = shader_type;
 	ID = glCreateShader(type);
+	
 	glShaderSource(ID, 1, (const GLchar**) &source_file, NULL);
 	glCompileShader(ID);
 
@@ -53,7 +52,11 @@ Shader::Shader(const char* shader_file, GLenum shader_type) : filename(shader_fi
 		glGetShaderInfoLog( ID, log_size, NULL, log_msg);
 		fprintf(stderr, "Reason: %s\n", log_msg);
 		delete [] log_msg;
-		
+		system("pause");
 		exit(EXIT_FAILURE);
 	}
+	
+	printf("Successfully compiled %s\n\n", filename);
+
+	delete[] source_file;
 };

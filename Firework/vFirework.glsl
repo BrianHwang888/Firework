@@ -1,7 +1,8 @@
 /*----Firework Vertex Shader ----*/
+#version 330 
 
-layout (location = 0) in vec3 vPosition;
-layout(loaction = 1) in vec4 vColor;
+in vec3 vPosition;
+in vec4 vColor;
  
 uniform mat4 ModelView;
 uniform mat4 Projection;

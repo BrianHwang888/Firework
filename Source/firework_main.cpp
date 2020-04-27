@@ -11,13 +11,18 @@
 #include "..\Headers\Floor_class.h"
 #include "..\Headers\render.h"
 
+void display_error_message(int code, const char* description);
 void framebuffer_size_callback(GLFWwindow* window, int width, int height);
 void processInput(GLFWwindow* window);
 
 int main(){
+	
+	const char* err_description;
+	int code, err = glfwInit();
+	if (GLFW_FALSE ^ err) 
+		code = glfwGetError(&err_description);
 
-	glfwInit();
-
+	printf("OpenGL version supported %s\n", glfwGetVersionString());
 	/* Window Initialization; Definition found in init_window */
 	init_window(3);
 
@@ -43,8 +48,8 @@ int main(){
 	/* SHADER INITIALIZATION */
 	Shader vertex("vertex_shader.glsl", GL_VERTEX_SHADER);
 	Shader fragment("fragment_shader.glsl", GL_FRAGMENT_SHADER);
-	Shader vertex_firework("vFirework.glsl", GL_VERTEX_SHADER);
-	Shader fragment_firework("fFirework.glsl", GL_FRAGMENT_SHADER);
+	//Shader vertex_firework("vFirework.glsl", GL_VERTEX_SHADER);
+	//Shader fragment_firework("fFirework.glsl", GL_FRAGMENT_SHADER);
 
 	/* PROGRAM INITIALIZATION */
 	Program basic_program(vertex.ID, fragment.ID);
@@ -80,3 +85,8 @@ int main(){
 	glfwTerminate();
 	return 0;
 }
+
+void display_error_message(int code, const char * description)
+{
+	printf("ERROR CODE: %d; %s", code, description);
+};
