@@ -1,9 +1,8 @@
 # Firework
 Things Done:
-	 - edit program class to include error checking for creation and linking
+	 - Fixed shader error in basic program
 
 Things to Do:
-
-	- Fix linking error in program class
  	- Implement matrices for projection, view, and model
 	- Implement camera class 
+	- Modify firework shader for matrix transformations
