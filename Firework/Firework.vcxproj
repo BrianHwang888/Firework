@@ -30,6 +30,7 @@
     <ClCompile Include="..\Source\init.cpp" />
     <ClCompile Include="..\Source\init_window.cpp" />
     <ClCompile Include="..\Source\render.cpp" />
+    <ClCompile Include="camera.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\Headers\Floor_class.h" />
@@ -39,6 +40,7 @@
     <ClInclude Include="..\Headers\program_class.h" />
     <ClInclude Include="..\Headers\render.h" />
     <ClInclude Include="..\Headers\shader_class.h" />
+    <ClInclude Include="camera.h" />
     <ClInclude Include="display.h" />
     <ClInclude Include="init.h" />
     <ClInclude Include="resource.h" />
