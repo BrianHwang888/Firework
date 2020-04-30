@@ -1,8 +1,5 @@
 #include "..\Firework\display.h"
 
-GLuint model_view;
-GLuint projection;
-
 GLfloat fovy = 45.0f;
 GLfloat aspect;
 GLfloat zNear = 0.5f;
@@ -18,12 +15,20 @@ glm::vec3 y_axis = glm::vec3(0.0f, 10.02f, 0.0f);
 glm::vec3 z_axis = glm::vec3(0.0f, 0.02f, 10.0f);
 
 //Setup projection and model_view matrix 
-void display(void) {
-	//
-	//model_view = glGetUniformLocation(basic_program->ID, "model_view");
-	//projection = glGetUniformLocation(basic_program->ID, "projection");
+void display(Program** program_array, camera* main_camera) {
+	
+	glm::mat4 trans = glm::mat4(1.0f);
+	trans = glm::rotate(trans, (float)glfwGetTime(), glm::vec3(0.0f, 0.0f, 1.0f));
+	trans = glm::scale(trans, glm::vec3(0.5f, 0.5f, 0.5f));
 
-	//glm::mat4 p = glm::perspective(fovy, aspect, zNear, zFar);
+	program_array[0]->set_uniform_mat4("transform", trans);
+
+	/*----- PROJECTION MATRIX SETUP -----*/
+	//program_array[0]->set_uniform_mat4("projection", glm::perspective(fovy, aspect, zNear, zFar));
+	
+	/*----- MODEL_VIEW MATRIX SETUP -----*/
+	//program_array[0]->set_uniform_mat4("model_view", main_camera->view);
+
 	//glUniformMatrix4fv(projection, 1, GL_FALSE, glm::value_ptr(p));
 	//
 	////model_view matrix setup
@@ -34,4 +39,5 @@ void display(void) {
 	//glUniformMatrix4fv(model_view, 1, GL_TRUE, glm::value_ptr(mv));
 	//glPolygonMode(GL_FRONT_AND_BACK, GL_FILL);
 
+	
 }

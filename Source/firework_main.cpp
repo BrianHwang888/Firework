@@ -78,7 +78,7 @@ int main(){
 		processInput(window);
 
 		//Rendering
-		render(program_array, firework, test_floor);
+		render(program_array, firework, test_floor, main_camera);
 
 		//check and call events; then swap buffers
 		glfwSwapBuffers(window);

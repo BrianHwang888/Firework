@@ -28,7 +28,7 @@ extern glm::vec3 x_axis;
 extern glm::vec3 y_axis;
 extern glm::vec3 z_axis;
 
-void display(void);
+void display(Program** program_array, camera* main_camera);
 
 #endif // !__DISPLAY_H__
 

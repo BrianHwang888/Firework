@@ -81,12 +81,12 @@ void Floor::gen_buffer(GLuint program){
 	glBufferSubData(GL_ARRAY_BUFFER, vertex_count * sizeof(glm::vec3), sizeof(glm::vec4) * vertex_count, colors);
 	
 	GLuint vertex_position = glGetAttribLocation(program, "vPosition");
-	enable_vao(0);
-	glVertexAttribPointer(0, 3, GL_FLOAT, GL_FALSE, sizeof(glm::vec3), (void*)0);
+	enable_vao(vertex_position);
+	glVertexAttribPointer(vertex_position, 3, GL_FLOAT, GL_FALSE, sizeof(glm::vec3), (void*)0);
 
 	GLuint vertex_color = glGetAttribLocation(program, "vColor");
-	enable_vao(1);
-	glVertexAttribPointer(1, 4, GL_FLOAT, GL_FALSE, sizeof(glm::vec4), (void*)(vertex_count * sizeof(glm::vec3)));
+	enable_vao(vertex_color);
+	glVertexAttribPointer(vertex_color, 4, GL_FLOAT, GL_FALSE, sizeof(glm::vec4), (void*)(vertex_count * sizeof(glm::vec3)));
 
 	printf("%d , %d\n", vertex_position, vertex_color);
 };
