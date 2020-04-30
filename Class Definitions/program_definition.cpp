@@ -1,4 +1,4 @@
-#include "..\Headers\program_class.h"
+#include"..\Headers\program_class.h"
 
 Program::Program(GLuint vertex_shader_id, GLuint fragment_shader_id){
 	ID = glCreateProgram();
@@ -10,7 +10,8 @@ Program::Program(GLuint vertex_shader_id, GLuint fragment_shader_id){
 	glAttachShader(ID, fragment_shader_id);
 };
 
-
+/*----- Program functions -----*/
+//Link shader program
 void Program::link(){
 	GLint linked;
 	glLinkProgram(ID);
@@ -28,8 +29,42 @@ void Program::link(){
 	}
 	printf("Successfully linked program object\n\n");
 };
-
+//Use shader program
 void Program::use(){
 	glUseProgram(ID);
 };
 
+/*----- Set uniform variables -----*/
+void Program::set_uniform_bool(const char* name, GLboolean &value) const {
+	glUniform1i(glGetUniformLocation(ID, name), value);
+};
+void Program::set_uniform_int(const char* name, GLint &value) const {
+	glUniform1i(glGetUniformLocation(ID, name), value);
+}
+void Program::set_uniform_float(const char* name, GLfloat &value) const {
+	glUniform1f(glGetUniformLocation(ID, name), value);
+}
+
+/*----- Set unifrom vectors  -----*/
+void Program::set_uniform_vec2(const char* name, const glm::vec2 &value) const {
+	glUniform2fv(glGetUniformLocation(ID, name), 1, &value[0]);
+
+}
+void Program::set_uniform_vec3(const char* name, const glm::vec3 &value) const {
+	glUniform3fv(glGetUniformLocation(ID, name), 1, &value[0]);
+
+}
+void Program::set_uniform_vec4(const char* name, const glm::vec4 &value) const {
+	glUniform4fv(glGetUniformLocation(ID, name), 1, &value[0]);
+}
+
+/*----- Set uniform matrices -----*/
+void Program::set_uniform_mat2(const char*name, const glm::mat2 &value) const {
+	glUniformMatrix2fv(glGetUniformLocation(ID, name), 1, GL_FALSE, &value[0][0]);
+}
+void Program::set_uniform_mat3(const char* name, const glm::mat3 &value) const {
+	glUniformMatrix3fv(glGetUniformLocation(ID, name), 1, GL_FALSE, &value[0][0]);
+};
+void Program::set_uniform_mat4(const char* name, const glm::mat4 &value) const {
+	glUniformMatrix4fv(glGetUniformLocation(ID, name), 1, GL_FALSE, &value[0][0]);
+};
