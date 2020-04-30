@@ -1,5 +1,5 @@
 /*----- Fragment Shader Position & Color -----*/
-#version 330 
+#version 330 core
 
 in vec4 color;
 

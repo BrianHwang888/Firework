@@ -99,16 +99,16 @@
     </ResourceCompile>
   </ItemGroup>
   <ItemGroup>
-    <None Include="..\Shaders\vFirework.glsl">
-      <Filter>Shaders</Filter>
-    </None>
-    <None Include="..\Shaders\fFirework.glsl">
-      <Filter>Shaders</Filter>
-    </None>
     <None Include="vertex_shader.glsl">
       <Filter>Shaders</Filter>
     </None>
     <None Include="fragment_shader.glsl">
+      <Filter>Shaders</Filter>
+    </None>
+    <None Include="fFirework.glsl">
+      <Filter>Shaders</Filter>
+    </None>
+    <None Include="vFirework.glsl">
       <Filter>Shaders</Filter>
     </None>
   </ItemGroup>

@@ -1,5 +1,5 @@
 /*----Firework Fragment Shader ----*/
-#version 330 
+#version 330 core
 
 in float y_pos;
 in vec4 color;
