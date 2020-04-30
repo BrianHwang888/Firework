@@ -6,6 +6,6 @@
 
 
 /* RENDERING FUNCTIONS */
-void render(Program** program_array, particle_emitter firework, Floor test_floor);
+void render(Program** program_array, particle_emitter* firework, Floor* test_floor);
 
 #endif // !__RENDER_H__

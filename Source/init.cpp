@@ -12,3 +12,14 @@ void init(Program** program_array, particle_emitter* firework, Floor* floor) {
 	floor->gen_buffer(program_array[0]->ID);
 }
 
+particle_emitter* init_particle_emitter(int num_particles) {
+	return new particle_emitter(num_particles);
+}
+
+Floor* init_floor() {
+	return new Floor();
+}
+
+camera* init_camera() {
+	return new camera();
+}

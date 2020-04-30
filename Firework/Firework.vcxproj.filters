@@ -51,7 +51,7 @@
     <ClCompile Include="..\Source\display.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="camera.cpp">
+    <ClCompile Include="..\Source\camera.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>
@@ -89,7 +89,7 @@
     <ClInclude Include="vertex.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="camera.h">
+    <ClInclude Include="..\Headers\camera.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>

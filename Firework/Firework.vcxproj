@@ -24,15 +24,16 @@
     <ClCompile Include="..\Class Definitions\particle_emitter_definition.cpp" />
     <ClCompile Include="..\Class Definitions\program_definition.cpp" />
     <ClCompile Include="..\Class Definitions\shader_definition.cpp" />
+    <ClCompile Include="..\Source\camera.cpp" />
     <ClCompile Include="..\Source\display.cpp" />
     <ClCompile Include="..\Source\firework_main.cpp" />
     <ClCompile Include="..\Source\Floor_definition.cpp" />
     <ClCompile Include="..\Source\init.cpp" />
     <ClCompile Include="..\Source\init_window.cpp" />
     <ClCompile Include="..\Source\render.cpp" />
-    <ClCompile Include="camera.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="..\Headers\camera.h" />
     <ClInclude Include="..\Headers\Floor_class.h" />
     <ClInclude Include="..\Headers\init_window.h" />
     <ClInclude Include="..\Headers\particle_class.h" />
@@ -40,7 +41,6 @@
     <ClInclude Include="..\Headers\program_class.h" />
     <ClInclude Include="..\Headers\render.h" />
     <ClInclude Include="..\Headers\shader_class.h" />
-    <ClInclude Include="camera.h" />
     <ClInclude Include="display.h" />
     <ClInclude Include="init.h" />
     <ClInclude Include="resource.h" />
