@@ -1,8 +1,9 @@
 # Firework
 Things Done:
-	 - Fixed shader error in basic program
+	 - Implement camera class
+	 - Implement martices for projection, view and model
 
 Things to Do:
- 	- Implement matrices for projection, view, and model
-	- Implement camera class 
 	- Modify firework shader for matrix transformations
+	- add mouse controls to move camera
+

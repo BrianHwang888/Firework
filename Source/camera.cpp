@@ -9,5 +9,5 @@ camera::camera()
 	camera_right = glm::normalize(glm::cross(up, camera_target_direction));
 	camera_up = glm::normalize(glm::cross(camera_target, camera_right));
 
-	view = glm::lookAt(camera_position, camera_target, up);
+	view_matrix = glm::lookAt(camera_position, camera_target, up);
 }

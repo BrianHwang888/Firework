@@ -1,2 +1,7 @@
-﻿  display.cpp
+﻿  camera.cpp
+  display.cpp
+  firework_main.cpp
+  init.cpp
+  render.cpp
+  Generating Code...
   Firework.vcxproj -> C:\Users\potatoe\source\repos\Firework\Debug\Firework.exe

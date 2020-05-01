@@ -18,10 +18,6 @@ extern GLfloat aspect;
 extern GLfloat zNear, zFar;
 extern GLfloat angle;
 
-//initial camera position
-extern glm::vec4 init_eye;
-extern glm::vec4 eye;
-
 //axis constants; for utiliy perposes 
 extern glm::vec3 origin;
 extern glm::vec3 x_axis;

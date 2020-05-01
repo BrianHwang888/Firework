@@ -12,7 +12,7 @@
 class camera
 {
 public:
-	glm::mat4 view;
+	glm::mat4 view_matrix;
 	camera();
 
 private:
