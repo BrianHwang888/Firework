@@ -8,6 +8,7 @@
 #include "..\Headers\program_class.h"
 #include "..\Headers\particle_emitter_class.h"
 #include "..\Headers\Floor_class.h"
+#include "..\Headers\axis.h"
 #include "..\Headers\render.h"
 #include "..\Headers\camera.h"
 
@@ -18,6 +19,7 @@ void keyboard_input_callback(GLFWwindow* window, int key, int scancode, int acti
 void display_error_message(int code, const char* description);
 
 camera* main_camera;
+Axies* grid;
 
 int main(){
 	
@@ -74,14 +76,15 @@ int main(){
 	/* RENDERING OBJECTS INITIALIZATION */
 	particle_emitter* firework = init_particle_emitter(300);
 	Floor* test_floor = init_floor();
-	
+	grid = init_axies();
+
 	/* BUFFER GENERATION FOR RENDERING OBJECTS */
-	init(program_array, firework, test_floor);
+	init(program_array, firework, test_floor, grid);
 
 	while(!glfwWindowShouldClose(window)){
 
 		//Rendering
-		render(program_array, firework, test_floor, main_camera);
+		render(program_array, firework, test_floor, main_camera, grid);
 
 		//check and call events; then swap buffers
 		glfwSwapBuffers(window);

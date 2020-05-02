@@ -17,7 +17,6 @@ class Floor {
 		GLuint floor_vertices_data;
 		GLuint floor_fragment_data;
 		GLuint VAO;
-		GLuint VAO2;
 
 		int vertex_count;
 	public:

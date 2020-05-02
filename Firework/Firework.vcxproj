@@ -20,6 +20,7 @@
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="..\..\..\..\..\..\Coding\glad\src\glad.c" />
+    <ClCompile Include="..\Class Definitions\axies.cpp" />
     <ClCompile Include="..\Class Definitions\particle_definition.cpp" />
     <ClCompile Include="..\Class Definitions\particle_emitter_definition.cpp" />
     <ClCompile Include="..\Class Definitions\program_definition.cpp" />
@@ -32,6 +33,7 @@
     <ClCompile Include="..\Source\render.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="..\Headers\axis.h" />
     <ClInclude Include="..\Headers\camera.h" />
     <ClInclude Include="..\Headers\Floor_class.h" />
     <ClInclude Include="..\Headers\particle_class.h" />
@@ -42,7 +44,6 @@
     <ClInclude Include="display.h" />
     <ClInclude Include="init.h" />
     <ClInclude Include="resource.h" />
-    <ClInclude Include="vertex.h" />
   </ItemGroup>
   <ItemGroup>
     <ResourceCompile Include="Firework.rc" />

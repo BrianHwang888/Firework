@@ -5,16 +5,16 @@ Floor::Floor() {
 	vertices = new glm::vec3[vertex_count];
 	colors = new glm::vec4[vertex_count];
 
-	vertices[0] = glm::vec3(0.5f, 0.5f, 0.0f);
-	vertices[1] = glm::vec3(0.5f, -0.5f, 0.0f);
-	vertices[2] = glm::vec3(-0.5f, 0.5f, 0.0f);
+	vertices[0] = glm::vec3(5.0f, 0.0f, 8.0f);
+	vertices[1] = glm::vec3(-5.0f, 0.0f, 8.0f);
+	vertices[2] = glm::vec3(-5.0f, 0.0f, -4.0f);
 
-	vertices[3] = glm::vec3(0.5f, -0.5f, 0.0f);
-	vertices[4] = glm::vec3(-0.5f, -0.5f, 0.0f);
-	vertices[5] = glm::vec3(-0.5f, 0.5f, 0.0f);
+	vertices[3] = glm::vec3(-5.0f, 0.0f, -4.0f);
+	vertices[4] = glm::vec3(5.0f, 0.0f, -4.0f);
+	vertices[5] = glm::vec3(5.0f, 0.0f, 8.0f);
 	
 	for (int i = 0; i < vertex_count; i++) 
-		colors[i] = glm::vec4(1.0f, 0.0f, 1.0f, 1.0f);
+		colors[i] = glm::vec4(0.0f, 1.0f, 0.0f, 1.0f);
 
 	/*for (int i = 0; i < vertex_count; i++) {
 		printf("Vertex %d: %f, %f, %f\nColor %d: %f, %f, %f, %f\n", i, vertices[i].x, vertices[i].y, vertices[i].z, i, colors[i].r, colors[i].g, colors[i].b, colors[i].a);

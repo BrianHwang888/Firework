@@ -2,7 +2,7 @@
 
 
 //initialization of rendering objects
-void init(Program** program_array, particle_emitter* firework, Floor* floor) {
+void init(Program** program_array, particle_emitter* firework, Floor* floor, Axies* grid) {
 	
 	/*Generating buffer for firework*/
 	firework->generate_buffer();
@@ -10,6 +10,7 @@ void init(Program** program_array, particle_emitter* firework, Floor* floor) {
 	firework->generate_vao_buffer(1, firework->num_particles * sizeof(glm::vec3), GL_FLOAT, GL_RGBA);
 
 	floor->gen_buffer(program_array[0]->ID);
+	grid->gen_buffer(program_array[0]->ID);
 }
 
 particle_emitter* init_particle_emitter(int num_particles) {
@@ -22,4 +23,8 @@ Floor* init_floor() {
 
 camera* init_camera() {
 	return new camera();
+}
+
+Axies* init_axies() {
+	return new Axies();
 }

@@ -19,7 +19,7 @@ void display(Program** program_array, camera* main_camera) {
 	/*----- MODEL_VIEW MATRIX SETUP -----*/
 	glm::mat4 mv = main_camera->get_view_matrix();
 
-	mv = glm::rotate(mv, (float)glfwGetTime(), glm::vec3(1.0f, 0.0f, 0.0f));
+	//mv = glm::rotate(mv, (float)glfwGetTime(), glm::vec3(1.0f, 0.0f, 0.0f));
 
 	program_array[0]->set_uniform_mat4("model_view", mv);
 

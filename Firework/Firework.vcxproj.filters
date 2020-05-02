@@ -51,6 +51,9 @@
     <ClCompile Include="..\Source\camera.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="..\Class Definitions\axies.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="resource.h">
@@ -80,10 +83,10 @@
     <ClInclude Include="display.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="vertex.h">
+    <ClInclude Include="..\Headers\camera.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="..\Headers\camera.h">
+    <ClInclude Include="..\Headers\axis.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>
