@@ -13,8 +13,6 @@
 #include "..\Headers\camera.h"
 
 void display_error_message(int code, const char* description);
-void framebuffer_size_callback(GLFWwindow* window, int width, int height);
-void processInput(GLFWwindow* window);
 
 int main(){
 	
@@ -39,6 +37,9 @@ int main(){
 
 	/* Setting window resize function; Definition found in init_window */
 	glfwSetFramebufferSizeCallback(window, framebuffer_size_callback);
+
+	/* Setting keyboard callback function; Definition in init_window */
+	glfwSetKeyCallback(window, keyboard_input_callback);
 
 	/* GLAD Initialization (manages function pointers for OpenGL) */
 	if(!gladLoadGLLoader((GLADloadproc)glfwGetProcAddress)){
@@ -75,7 +76,7 @@ int main(){
 	while(!glfwWindowShouldClose(window)){
 
 		//Process inputs
-		processInput(window);
+		//processInput(window);
 
 		//Rendering
 		render(program_array, firework, test_floor, main_camera);

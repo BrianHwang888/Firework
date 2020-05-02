@@ -12,8 +12,20 @@ void framebuffer_size_callback(GLFWwindow* window, int width, int height) {
 
 }
 
-//Closes window when "ESC" key pressed
+/*----- PROCESS KEYBOARD INPUT -----*/
 void processInput(GLFWwindow *window){
-	if (glfwGetKey(window, GLFW_KEY_ESCAPE) == GLFW_PRESS)
+	
+	if (glfwGetKey(window, GLFW_KEY_ESCAPE) == GLFW_PRESS) {
 		glfwSetWindowShouldClose(window, true);
+	}
+	
+}
+
+void keyboard_input_callback(GLFWwindow* window, int key, int scancode, int action, int mods) {
+	switch (key)
+	{
+	case GLFW_KEY_ESCAPE:
+		if (action == GLFW_PRESS)
+			glfwSetWindowShouldClose(window, true);
+	}
 }
