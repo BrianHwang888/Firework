@@ -4,7 +4,6 @@
 #include <stddef.h>
 
 #include "..\Firework\init.h"
-#include "..\Headers\init_window.h"
 #include "..\Headers\shader_class.h"
 #include "..\Headers\program_class.h"
 #include "..\Headers\particle_emitter_class.h"
@@ -12,7 +11,13 @@
 #include "..\Headers\render.h"
 #include "..\Headers\camera.h"
 
+void init_window(int option);
+void framebuffer_size_callback(GLFWwindow* window, int width, int height);
+void keyboard_input_callback(GLFWwindow* window, int key, int scancode, int action, int mod);
+
 void display_error_message(int code, const char* description);
+
+camera* main_camera;
 
 int main(){
 	
@@ -64,7 +69,7 @@ int main(){
 	//firework_program.link();
 
 	/* CAMERA INITIALIZATION */
-	camera* main_camera = init_camera();
+	main_camera = init_camera();
 
 	/* RENDERING OBJECTS INITIALIZATION */
 	particle_emitter* firework = init_particle_emitter(300);
@@ -74,9 +79,6 @@ int main(){
 	init(program_array, firework, test_floor);
 
 	while(!glfwWindowShouldClose(window)){
-
-		//Process inputs
-		//processInput(window);
 
 		//Rendering
 		render(program_array, firework, test_floor, main_camera);
@@ -98,3 +100,27 @@ void display_error_message(int code, const char * description)
 {
 	printf("ERROR CODE: %d; %s", code, description);
 };
+
+//initialize window with specified option
+void init_window(int option) {
+	glfwWindowHint(GLFW_CONTEXT_VERSION_MAJOR, option);
+	glfwWindowHint(GLFW_CONTEXT_VERSION_MINOR, option);
+	glfwWindowHint(GLFW_OPENGL_PROFILE, GLFW_OPENGL_CORE_PROFILE);
+};
+
+void framebuffer_size_callback(GLFWwindow* window, int width, int height) {
+	glViewport(0, 0, width, height);
+
+}
+
+/*----- PROCESS KEYBOARD INPUT -----*/
+void keyboard_input_callback(GLFWwindow *window, int key, int scancode, int action, int mod) {
+
+	switch (key)
+	{
+	case GLFW_KEY_ESCAPE:
+		glfwSetWindowShouldClose(window, true);
+	}
+
+	main_camera->process_input(window, key);
+}

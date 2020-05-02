@@ -17,7 +17,7 @@ void display(Program** program_array, camera* main_camera) {
 	program_array[0]->set_uniform_mat4("projection", glm::perspective(fovy, aspect, zNear, zFar));
 
 	/*----- MODEL_VIEW MATRIX SETUP -----*/
-	glm::mat4 mv = main_camera->view_matrix;
+	glm::mat4 mv = main_camera->get_view_matrix();
 
 	mv = glm::rotate(mv, (float)glfwGetTime(), glm::vec3(1.0f, 0.0f, 0.0f));
 

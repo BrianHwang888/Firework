@@ -11,3 +11,30 @@ camera::camera()
 
 	view_matrix = glm::lookAt(camera_position, camera_target, up);
 }
+
+glm::mat4 camera::get_view_matrix() {
+	return view_matrix;
+}
+
+void camera::update() {
+	view_matrix = glm::lookAt(camera_position, camera_target, up);
+}
+
+void camera::process_input(GLFWwindow* window, int key) {
+
+	switch (key)
+	{
+	case GLFW_KEY_W:
+		camera_position.y += 1.0F;
+
+	case GLFW_KEY_A:
+		camera_position.x -= 1.0F;
+
+	case GLFW_KEY_S:
+		camera_position.y -= 1.0f;
+
+	case GLFW_KEY_D:
+		camera_position.x += 1.0f;
+	}
+	update();
+}

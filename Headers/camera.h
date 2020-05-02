@@ -12,10 +12,13 @@
 class camera
 {
 public:
-	glm::mat4 view_matrix;
 	camera();
+	void process_input(GLFWwindow* window, int key);
+	void update();
+	glm::mat4 get_view_matrix();
 
 private:
+	glm::mat4 view_matrix;
 	glm::vec3 camera_position;
 	glm::vec3 camera_target;
 	glm::vec3 camera_target_direction;

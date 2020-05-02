@@ -36,9 +36,6 @@
     <ClCompile Include="..\Class Definitions\shader_definition.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="..\Source\init_window.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
     <ClCompile Include="..\Source\Floor_definition.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
@@ -69,9 +66,6 @@
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="..\Headers\shader_class.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="..\Headers\init_window.h">
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="..\Headers\Floor_class.h">
