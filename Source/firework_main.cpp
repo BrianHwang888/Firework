@@ -125,5 +125,5 @@ void keyboard_input_callback(GLFWwindow *window, int key, int scancode, int acti
 		glfwSetWindowShouldClose(window, true);
 	}
 
-	main_camera->process_input(window, key);
+	main_camera->process_input(window, key, action);
 }

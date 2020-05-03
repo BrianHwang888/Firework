@@ -9,12 +9,12 @@
 #include "..\Headers\axis.h"
 
 /* Rendering objects initialization */
-void init(Program** program_array, particle_emitter* firework, Floor* floor, Axies* grid);
-
 camera* init_camera();
 particle_emitter* init_particle_emitter(int num_particles);
 Floor* init_floor();
 Axies* init_axies();
+
+void init(Program** program_array, particle_emitter* firework, Floor* floor, Axies* grid);
 
 #endif
 

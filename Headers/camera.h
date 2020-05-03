@@ -6,14 +6,14 @@
 #include<glm/glm.hpp>
 #include<glm/gtc/matrix_transform.hpp>
 #include<glm/gtc/type_ptr.hpp>
-
+#include <stdio.h>
 /*------ Camera class ------*/
 //All directions are relative to the camera
 class camera
 {
 public:
 	camera();
-	void process_input(GLFWwindow* window, int key);
+	void process_input(GLFWwindow* window, int key, int action);
 	void update();
 	glm::mat4 get_view_matrix();
 
