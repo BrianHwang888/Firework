@@ -27,7 +27,7 @@ void Program::link(){
 		system("pause");
 		exit(EXIT_FAILURE);
 	}
-	printf("Successfully linked program object\n\n");
+	printf("Successfully linked program ID: %d\n\n", ID);
 };
 //Use shader program
 void Program::use(){

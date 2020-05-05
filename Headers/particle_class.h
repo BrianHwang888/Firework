@@ -7,6 +7,7 @@
 #include <glad/glad.h>
 #include <GLFW/glfw3.h>
 #include <glm/common.hpp>
+#include<glm/gtc/type_ptr.hpp>
 
 class particle{
 

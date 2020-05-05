@@ -79,7 +79,7 @@ void Floor::gen_buffer(GLuint program){
 	glBufferData(GL_ARRAY_BUFFER, vertex_count * (sizeof(glm::vec3) +  sizeof(glm::vec4)), NULL, GL_STATIC_DRAW);
 	glBufferSubData(GL_ARRAY_BUFFER, 0, vertex_count * sizeof(glm::vec3), vertices);
 	glBufferSubData(GL_ARRAY_BUFFER, vertex_count * sizeof(glm::vec3), sizeof(glm::vec4) * vertex_count, colors);
-	
+
 	GLuint vertex_position = glGetAttribLocation(program, "vPosition");
 	enable_vao(vertex_position);
 	glVertexAttribPointer(vertex_position, 3, GL_FLOAT, GL_FALSE, sizeof(glm::vec3), (void*)0);
@@ -87,8 +87,6 @@ void Floor::gen_buffer(GLuint program){
 	GLuint vertex_color = glGetAttribLocation(program, "vColor");
 	enable_vao(vertex_color);
 	glVertexAttribPointer(vertex_color, 4, GL_FLOAT, GL_FALSE, sizeof(glm::vec4), (void*)(vertex_count * sizeof(glm::vec3)));
-
-	printf("%d , %d\n", vertex_position, vertex_color);
 };
 
 void Floor::enable_vao(GLuint attrib_loc) {

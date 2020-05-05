@@ -9,6 +9,10 @@ class particle_emitter {
 public:
 	int num_particles;
 	particle* particles;
+	glm::mat4 model;
+
+	glm::vec3* part_vertices;
+	glm::vec4* part_color;
 
 	//buffers to hold particles attributes
 	GLuint particle_buffer;
@@ -19,14 +23,12 @@ public:
 	GLuint particle_vao;
 
 	//Buffer funcutions
-	void generate_buffer();
-	void generate_vao_buffer(GLuint attrib_loc, GLint begin, GLenum type, GLint size);
+	void generate_buffer(GLuint program);
 	void enable_vao(int attrib_loc);
 	void disable_vao(int attrib_loc);
 
 	//Rendering related functions
-	void Draw();
-	void Update();
+	void Draw(GLuint program);
 
 };
 

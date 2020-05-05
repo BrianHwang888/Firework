@@ -57,18 +57,17 @@ int main(){
 	/*----- SHADER INITIALIZATION -----*/
 	Shader vertex("vertex_shader.glsl", GL_VERTEX_SHADER);
 	Shader fragment("fragment_shader.glsl", GL_FRAGMENT_SHADER);
-	//Shader vertex_firework("vFirework.glsl", GL_VERTEX_SHADER);
-	//Shader fragment_firework("fFirework.glsl", GL_FRAGMENT_SHADER);
+	Shader vertex_firework("vFirework.glsl", GL_VERTEX_SHADER);
+	Shader fragment_firework("fFirework.glsl", GL_FRAGMENT_SHADER);
 
 	/*----- PROGRAM INITIALIZATION -----*/
 	Program basic_program(vertex.ID, fragment.ID);
-	//Program firework_program(vertex_firework.ID, fragment_firework.ID);
-	//Program* program_array[2] = { &basic_program, &firework_program };
-	Program* program_array[1] = { &basic_program };
+	Program firework_program(vertex_firework.ID, fragment_firework.ID);
+	Program* program_array[2] = { &basic_program, &firework_program };
 
 	/*----- RENDERING INITIALIZATION -----*/
 	basic_program.link();
-	//firework_program.link();
+	firework_program.link();
 
 	/* CAMERA INITIALIZATION */
 	main_camera = init_camera();
