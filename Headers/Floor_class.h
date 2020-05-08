@@ -15,7 +15,6 @@ class Floor {
 		glm::vec4* colors;
 
 		GLuint floor_vertices_data;
-		GLuint floor_fragment_data;
 		GLuint VAO;
 
 		int vertex_count;

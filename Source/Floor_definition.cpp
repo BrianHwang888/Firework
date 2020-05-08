@@ -16,9 +16,6 @@ Floor::Floor() {
 	for (int i = 0; i < vertex_count; i++) 
 		colors[i] = glm::vec4(0.0f, 1.0f, 0.0f, 1.0f);
 
-	/*for (int i = 0; i < vertex_count; i++) {
-		printf("Vertex %d: %f, %f, %f\nColor %d: %f, %f, %f, %f\n", i, vertices[i].x, vertices[i].y, vertices[i].z, i, colors[i].r, colors[i].g, colors[i].b, colors[i].a);
-	}*/
 }
 
 Floor::Floor(const char* filename){
@@ -87,6 +84,7 @@ void Floor::gen_buffer(GLuint program){
 	GLuint vertex_color = glGetAttribLocation(program, "vColor");
 	enable_vao(vertex_color);
 	glVertexAttribPointer(vertex_color, 4, GL_FLOAT, GL_FALSE, sizeof(glm::vec4), (void*)(vertex_count * sizeof(glm::vec3)));
+
 };
 
 void Floor::enable_vao(GLuint attrib_loc) {
@@ -97,7 +95,7 @@ void Floor::disable_vao(GLuint attrib_loc) {
 	glDisableVertexAttribArray(attrib_loc);
 }
 
-//draws floor; Assumes location 0 is vertex position and 1 is color data
+//draws floor
 void Floor::draw(GLuint program) {
 	glUseProgram(program);
 	glBindVertexArray(VAO);

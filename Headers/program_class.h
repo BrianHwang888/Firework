@@ -22,6 +22,7 @@ class Program {
 		void set_uniform_bool(const char* name, GLboolean &value) const;
 		void set_uniform_int(const char* name, GLint &value) const;
 		void set_uniform_float(const char* name, GLfloat &value) const;
+		void set_uniform_double(const char* name, GLdouble &value) const;
 
 		/*----- set uniform vectors -----*/
 		void set_uniform_vec2(const char* name, const glm::vec2 &value) const;

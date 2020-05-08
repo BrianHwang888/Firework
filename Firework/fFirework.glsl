@@ -7,7 +7,5 @@ in vec4 color;
 out vec4 fcolor;
 
 void main(){
-	if(y_pos < 0.1)
-		discard;
-	fcolor = color;
+	fcolor = vec4(1.0f, 0.0f, 0.0f, 1.0f);
 }

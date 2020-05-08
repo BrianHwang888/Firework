@@ -44,6 +44,9 @@ void Program::set_uniform_int(const char* name, GLint &value) const {
 void Program::set_uniform_float(const char* name, GLfloat &value) const {
 	glUniform1f(glGetUniformLocation(ID, name), value);
 }
+void Program::set_uniform_double(const char* name, GLdouble &value) const {
+	glUniform1d(glGetUniformLocation(ID, name), value);
+}
 
 /*----- Set unifrom vectors  -----*/
 void Program::set_uniform_vec2(const char* name, const glm::vec2 &value) const {

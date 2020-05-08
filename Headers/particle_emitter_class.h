@@ -13,6 +13,7 @@ public:
 
 	glm::vec3* part_vertices;
 	glm::vec4* part_color;
+	glm::vec3* part_velocities;
 
 	//buffers to hold particles attributes
 	GLuint particle_buffer;

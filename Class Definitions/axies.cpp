@@ -39,6 +39,8 @@ void Axies::gen_buffer(GLuint program) {
 	GLuint vertex_color = glGetAttribLocation(program, "vColor");
 	enable_vao(vertex_color);
 	glVertexAttribPointer(vertex_color, 4, GL_FLOAT, GL_FALSE, sizeof(glm::vec4), (void*)(vertex_count * sizeof(glm::vec3)));
+
+	glLineWidth(2.0f);
 }
 
 void Axies::enable_vao(GLuint attrib_loc) {

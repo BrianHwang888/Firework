@@ -3,7 +3,9 @@
 camera::camera()
 {
 	camera_position = glm::vec3(-1.0f, 6.0f, -4.0f);
-	camera_target = glm::vec3(camera_position.x + 1.0f, camera_position.y, 0.0f);
+	//camera_target = glm::vec3(camera_position.x + 1.0f, camera_position.y, 0.0f);
+	camera_target = glm::vec3(0.0f, 0.0f, 0.0f);
+	
 	camera_target_direction = glm::normalize(camera_position - camera_target);
 	up = glm::vec3(0.0f, 1.0f, 0.0f);
 	camera_right = glm::normalize(glm::cross(up, camera_target_direction));
@@ -45,6 +47,9 @@ void camera::process_input(GLFWwindow* window, int key, int action) {
 	
 	if (key == GLFW_KEY_O && action == GLFW_PRESS)
 		camera_target = glm::vec3(0.0f, 0.0f, 0.0f);
+	
+	if (key == GLFW_KEY_P && action == GLFW_PRESS)
+		camera_position = glm::vec3(-1.0f, 6.0f, -4.0f);
 	
 	update();
 }
