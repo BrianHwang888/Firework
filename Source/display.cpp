@@ -51,8 +51,6 @@ void display_particles(Program** program_array, camera* main_camera, particle_em
 		final_position.x = part_velo.x * time * 0.001f + part_pos.x;
 		final_position.z = part_velo.z * time * 0.001f + part_pos.z;
 
-		
-		
 		firework->particles[i].vertices = final_position;
 		model = glm::translate(model, part_velo);
 		firework->particles[i].velocity.y = final_velocity_y;

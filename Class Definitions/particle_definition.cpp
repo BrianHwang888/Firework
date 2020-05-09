@@ -38,3 +38,9 @@ void particle::enable_vao(int attrib_loc) {
 void particle::disable_vao(int attrib_loc) {
 	glDisableVertexAttribArray(attrib_loc);
 }
+
+void particle::draw(GLuint program) {
+	glUseProgram(program);
+	glBindVertexArray(VAO);
+	glDrawArrays(GL_POINTS, 0, 3);
+}
