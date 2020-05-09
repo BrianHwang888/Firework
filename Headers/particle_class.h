@@ -13,6 +13,7 @@ class particle{
 
 	public:
 		GLuint VAO;
+		GLuint particle_buffer;
 
 		//Attributes
 		glm::vec3 vertices;
