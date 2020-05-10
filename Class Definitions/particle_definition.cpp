@@ -1,4 +1,5 @@
 #include "..\Headers\particle_class.h"
+#include<stdio.h>
 
 //Definitions for particle class
 particle::particle() {
@@ -23,12 +24,12 @@ void particle::generate_buffer(GLuint program) {
 
 	GLuint vertex_position = glGetAttribLocation(program, "vPosition");
 	enable_vao(vertex_position);
-	glVertexAttribPointer(vertex_position, 3, GL_FLOAT, GL_FALSE, 0, (void*)0);
+	glVertexAttribPointer(vertex_position, 3, GL_FLOAT, GL_FALSE, sizeof(glm::vec3), (void*)0);
 
 	GLuint vertex_color = glGetAttribLocation(program, "vColor");
 	enable_vao(vertex_color);
-	glVertexAttribPointer(vertex_color, 4, GL_FLOAT, GL_FALSE, 0, (void*)(sizeof(glm::vec3)));
-
+	glVertexAttribPointer(vertex_color, 4, GL_FLOAT, GL_FALSE, sizeof(glm::vec4), (void*)(sizeof(glm::vec3)));
+	
 }
 
 void particle::enable_vao(int attrib_loc) {
@@ -39,8 +40,7 @@ void particle::disable_vao(int attrib_loc) {
 	glDisableVertexAttribArray(attrib_loc);
 }
 
-void particle::draw(GLuint program) {
-	glUseProgram(program);
+void particle::draw() {
 	glBindVertexArray(VAO);
-	glDrawArrays(GL_POINTS, 0, 3);
+	glDrawArrays(GL_POINTS, 0, 1);
 }

@@ -36,27 +36,21 @@ void display_particles(Program** program_array, camera* main_camera, particle_em
 	
 	/*----- VIEW MATRIX SETUP -----*/
 	program_array[1]->set_uniform_mat4("view", main_camera->get_view_matrix());
-
+	
 	/*----- MODEL_VIEW MATRIX SETUP -----*/
-	glm::mat4 model;
-
 	for (int i = 0; i < firework->num_particles; i++) {
-		glm::vec3 part_velo = firework->particles[i].velocity;
-		glm::vec3 part_pos = firework->particles[i].vertices;
-		glm::vec3 final_position = part_pos;
-		model = firework->particles[i].model_matrix;
-		float final_velocity_y = (float)(pow(-4.9, -10000000) * time + part_velo.y);
 
-		final_position.y = (float)(pow(-4.9, -10000000) * time * time + part_velo.y * time * 0.001f + part_pos.y);
-		final_position.x = part_velo.x * time * 0.001f + part_pos.x;
-		final_position.z = part_velo.z * time * 0.001f + part_pos.z;
+		////change displacement
+		firework->particles[i].vertices.x += firework->particles[i].velocity.x * time;
+		firework->particles[i].vertices.y += pow(-4.9f, -1000000) * pow(time, 2) + firework->particles[i].velocity.y * time;
+		firework->particles[i].vertices.z += firework->particles[i].velocity.z * time;
+		
+		//change y velocity
+		firework->particles[i].velocity.y += pow(-9.8f, -10000000) * time;
 
-		firework->particles[i].vertices = final_position;
-		model = glm::translate(model, part_velo);
-		firework->particles[i].velocity.y = final_velocity_y;
-		if (final_velocity_y <= 0)
-			printf("REACHED HIGHEST POINT\n");
+		firework->particles[i].model_matrix = glm::translate(firework->particles[i].model_matrix, firework->particles[i].velocity * 0.001f);
+
+		program_array[1]->set_uniform_mat4("model", firework->particles[i].model_matrix);
+		firework->particles[i].draw();
 	}
-
-	program_array[1]->set_uniform_mat4("model", model);
 }

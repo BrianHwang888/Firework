@@ -14,6 +14,6 @@ void render(Program** program_array, particle_emitter* firework, Floor* test_flo
 	gird->draw(program_array[0]->ID);
 	display(program_array, main_camera);
 
-	firework->Draw(program_array[1]->ID);
+	glUseProgram(program_array[1]->ID);
 	display_particles(program_array, main_camera, firework);
 };

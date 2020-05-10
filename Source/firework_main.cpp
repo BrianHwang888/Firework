@@ -100,7 +100,7 @@ int main(){
 
 void display_error_message(int code, const char * description)
 {
-	printf("ERROR CODE: %d; %s", code, description);
+	printf("ERROR CODE: %d;\n%s", code, description);
 };
 
 //initialize window with specified option

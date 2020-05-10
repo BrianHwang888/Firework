@@ -29,7 +29,7 @@ class particle{
 		void enable_vao(int attrib_loc);
 		void disable_vao(int attrib_loc);
 
-		void draw(GLuint program);
+		void draw();
 };
 
 #endif
