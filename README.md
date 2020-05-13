@@ -1,12 +1,12 @@
 # Firework
 
 Things Done:
-	 - Modify firework shader for matrix transformations
-	 - Firework displayed; Points explode like a firework
-
+	 - Loop animation; restarts when 250 particles reaches floor
+	 - enable GL_DEPTH_TEST
+	 - Updated to more desirable motion
 
 Things to Do:
-	- Loop animation
+	
 
 Polishing Things:
 	- add mouse controls to move camera

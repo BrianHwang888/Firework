@@ -10,7 +10,7 @@ public:
 	int num_particles;
 	particle* particles;
 
-	glm::vec3* part_vertices;
+	glm::vec3* part_velocity;
 
 	//buffers to hold particles attributes
 	particle_emitter();

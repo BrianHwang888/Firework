@@ -29,7 +29,7 @@ void display_particles(Program** program_array, camera* main_camera, particle_em
 	GLfloat zNear = 0.5f;
 	GLfloat zFar = 15.0f;
 	GLfloat angle = 0.0f;
-	GLfloat time = (GLfloat)glfwGetTime();
+	static GLfloat time = (GLfloat)glfwGetTime() - time;
 	static int num_particles_discarded = 0;
 
 	/*----- PROJECTION MATRIX SETUP -----*/
@@ -40,30 +40,35 @@ void display_particles(Program** program_array, camera* main_camera, particle_em
 	
 	/*----- MODEL_VIEW MATRIX SETUP -----*/
 	for (int i = 0; i < firework->num_particles; i++) {
+		
 		//change displacement
 		firework->particles[i].vertices.x += firework->particles[i].velocity.x * time;
-		firework->particles[i].vertices.y += -0.000049f * pow(time, 2) + firework->particles[i].velocity.y * time;
+		firework->particles[i].vertices.y += -0.00000049f * pow(time, 2) + firework->particles[i].velocity.y * time;
 		firework->particles[i].vertices.z += firework->particles[i].velocity.z * time;
 		
 		//change y velocity
-		firework->particles[i].velocity.y += -0.00000098f * time;
+		firework->particles[i].velocity.y += -0.0098f * time;
 
-		firework->particles[i].model_matrix = glm::translate(firework->particles[i].model_matrix, firework->particles[i].velocity * 0.001f);
+		firework->particles[i].model_matrix = glm::translate(firework->particles[i].model_matrix, firework->particles[i].velocity * 0.01f);
 
 		program_array[1]->set_uniform_mat4("model", firework->particles[i].model_matrix);
 		firework->particles[i].draw();
 
-		if (firework->particles[i].vertices.y <= 0) 
+		if (!(firework->particles[i].discarded) && firework->particles[i].vertices.y <= 0.0f) {
 			num_particles_discarded++;
+			firework->particles[i].discarded = true;
+		}
 
-		if (num_particles_discarded >= 100) {
+		if (num_particles_discarded >= (firework->num_particles - 50)) {
 			num_particles_discarded = 0;
 			for (int i = 0; i < firework->num_particles; i++) {
-				firework->particles[i].vertices = glm::vec3(0.0f, 0.01f, 0.0f);
+				firework->particles[i].vertices = glm::vec3(0.0f, 0.1f, 0.0f);
 				firework->particles[i].model_matrix = glm::mat4(1.0f);
-				firework->particles[i].velocity = glm::vec3(2.0f * ((rand() % 256) / 256.0f - 0.5f), 1.2 * 2.0 * ((rand() % 256) / 256.0), 2.0 * ((rand() % 256) / 256.0f - 0.5f));
+				firework->particles[i].velocity = firework->part_velocity[i];
+				firework->particles[i].discarded = false;
 			}
 			break;
 		}
 	}
+
 }

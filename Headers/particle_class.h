@@ -21,6 +21,7 @@ class particle{
 		glm::vec4 color;
 		glm::mat4 model_matrix;
 
+		bool discarded;
 		//Constructors
 		particle();
 		particle(glm::vec3 pos, glm::vec3 velo, glm::vec4 part_color);
