@@ -15,11 +15,17 @@
 void init_window(int option);
 void framebuffer_size_callback(GLFWwindow* window, int width, int height);
 void keyboard_input_callback(GLFWwindow* window, int key, int scancode, int action, int mod);
+void mouse_input_callback(GLFWwindow* window, double x_pos, double y_pos);
 
 void display_error_message(int code, const char* description);
 
 camera* main_camera;
 Axies* grid;
+
+bool first_mouse = true;
+float last_x = 400.0f, last_y = 300.0f;
+float yaw = -90.0f;
+float pitch = 0.0f;
 
 int main(){
 	
@@ -47,6 +53,8 @@ int main(){
 
 	/* Setting keyboard callback function; Definition in init_window */
 	glfwSetKeyCallback(window, keyboard_input_callback);
+	glfwSetCursorPosCallback(window, mouse_input_callback);
+	glfwSetInputMode(window, GLFW_CURSOR, GLFW_CURSOR_DISABLED);
 
 	/* GLAD Initialization (manages function pointers for OpenGL) */
 	if(!gladLoadGLLoader((GLADloadproc)glfwGetProcAddress)){
@@ -124,5 +132,22 @@ void keyboard_input_callback(GLFWwindow *window, int key, int scancode, int acti
 		glfwSetWindowShouldClose(window, true);
 	}
 
-	main_camera->process_input(window, key, action);
+	main_camera->process_input(window, key, action, mod);
+}
+
+void mouse_input_callback(GLFWwindow* window, double x_pos, double y_pos) {
+	if (first_mouse) {
+		last_x = x_pos;
+		last_y = y_pos;
+		first_mouse = false;
+	}
+
+	float x_offset = x_pos - last_x;
+	float y_offset = last_y - y_pos;
+
+	last_x = x_pos;
+	last_y = y_pos;
+
+	main_camera->process_mouse(x_offset, y_offset);
+
 }

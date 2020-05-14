@@ -7,7 +7,7 @@ Axies::Axies() {
 	colors = new glm::vec4[vertex_count];
 
 	for (int i = 0; i <= 4; i+=2) 
-		vertices[i] = glm::vec3(0.0f, 0.02f, 0.0f);
+		vertices[i] = glm::vec3(0.0f, 1.0f, 0.0f);
 	vertices[1] = glm::vec3(10.0f, 0.02f, 0.0f);
 	vertices[3] = glm::vec3(0.0f, 10.02f, 0.0f);
 	vertices[5] = glm::vec3(0.0f, 0.02f, 10.0f);
