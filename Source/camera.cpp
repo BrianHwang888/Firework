@@ -2,15 +2,18 @@
 
 camera::camera()
 {
-	yaw = -90.0f;
-	pitch = 0.0f;
+	yaw = -291.150330f;
+	pitch = -44.100040;
 	sensitivity = 0.05f;
 	world_up = glm::vec3(0.0f, 1.0f, 0.0f);
 
-	camera_position = glm::vec3(-1.0f, 6.0f, -4.0f);
-	camera_front = glm::vec3(0.0f, 0.0f, -1.0f);
-	camera_up = glm::vec3(0.0f, 1.0f, 0.0f);
-	camera_direction = glm::vec3(0.0f, 0.1f, 0.0f);
+	camera_position = glm::vec3(-0.740888f, 5.304087f, -3.330249f);
+	camera_front = glm::vec3(0.259112f, -0.695913f, 0.669751f);
+
+	camera_right = glm::normalize(glm::cross(camera_front, world_up));
+	camera_up = glm::normalize(glm::cross(camera_right, camera_front));
+	camera_direction = camera_position + camera_front;
+
 	view_matrix = glm::lookAt(camera_position, camera_direction, camera_up);
 }
 
@@ -19,7 +22,6 @@ glm::mat4 camera::get_view_matrix() {
 }
 
 void camera::update() {
-	//camera_direction = camera_position + camera_front;
 	glm::vec3 front;
 	front.x = cos(glm::radians(yaw)) * cos(glm::radians(pitch));
 	front.y = sin(glm::radians(pitch));
@@ -50,9 +52,13 @@ void camera::process_input(GLFWwindow* window, int key, int action, int mods) {
 	if (key == GLFW_KEY_SPACE && action == GLFW_PRESS) 
 		camera_position += camera_up;
 
+	//goes to original position
 	if (key == GLFW_KEY_O && action == GLFW_PRESS) {
 		camera_direction = glm::vec3(0.0f, 0.1f, 0.0f);
-		camera_position = glm::vec3(-1.0f, 6.0f, -4.0f);
+		camera_position = glm::vec3(-0.740888f, 5.304087f, -3.330249f);
+		camera_front = glm::vec3(0.259112f, -0.695913f, 0.669751f);
+		yaw = -291.150330f;
+		pitch = -44.100040;
 	}
 
 	if (key == GLFW_KEY_O && action == GLFW_PRESS && mods == GLFW_MOD_SHIFT) {
@@ -62,7 +68,6 @@ void camera::process_input(GLFWwindow* window, int key, int action, int mods) {
 	if (key == GLFW_KEY_P && action == GLFW_PRESS)
 		camera_position = glm::vec3(-1.0f, 6.0f, -4.0f);
 
-	printf("CAMERA POSITION: %f, %f, %f\n", camera_position.x, camera_position.y, camera_position.z);
 	update();
 }
 
