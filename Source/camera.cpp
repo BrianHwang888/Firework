@@ -5,6 +5,7 @@ camera::camera()
 	yaw = -291.150330f;
 	pitch = -44.100040;
 	sensitivity = 0.05f;
+	speed = 2.5f;
 	world_up = glm::vec3(0.0f, 1.0f, 0.0f);
 
 	camera_position = glm::vec3(-0.740888f, 5.304087f, -3.330249f);
@@ -35,22 +36,22 @@ void camera::update() {
 	view_matrix = glm::lookAt(camera_position, camera_direction, camera_up);
 }
 
-void camera::process_input(GLFWwindow* window, int key, int action, int mods) {
+void camera::process_input(GLFWwindow* window, int key, int action, int mods, GLfloat time) {
+	float camera_speed = speed * time;
+	if (key == GLFW_KEY_W && (action == GLFW_REPEAT || action == GLFW_PRESS))
+		camera_position += (camera_front * camera_speed);
 	
-	if (key == GLFW_KEY_W && action == GLFW_PRESS) 
-		camera_position += camera_front;
+	if (key == GLFW_KEY_A && (action == GLFW_REPEAT || action == GLFW_PRESS))
+		camera_position -= (camera_right * camera_speed);
 	
-	if (key == GLFW_KEY_A && action == GLFW_PRESS) 
-		camera_position -= glm::normalize(glm::cross(camera_front, camera_up));
+	if (key == GLFW_KEY_S && (action == GLFW_REPEAT || action == GLFW_PRESS))
+		camera_position -= (camera_front * camera_speed);
 	
-	if (key == GLFW_KEY_S && action == GLFW_PRESS) 
-		camera_position -= camera_front;
+	if (key == GLFW_KEY_D && (action == GLFW_REPEAT || action == GLFW_PRESS))
+		camera_position += (camera_right * camera_speed);
 	
-	if (key == GLFW_KEY_D && action == GLFW_PRESS) 
-		camera_position += glm::normalize(glm::cross(camera_front, camera_up));
-	
-	if (key == GLFW_KEY_SPACE && action == GLFW_PRESS) 
-		camera_position += camera_up;
+	if (key == GLFW_KEY_SPACE && (action == GLFW_REPEAT || action == GLFW_PRESS))
+		camera_position += (camera_up * camera_speed);
 
 	//goes to original position
 	if (key == GLFW_KEY_O && action == GLFW_PRESS) {

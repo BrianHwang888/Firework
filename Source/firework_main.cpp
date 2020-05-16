@@ -125,14 +125,18 @@ void framebuffer_size_callback(GLFWwindow* window, int width, int height) {
 
 /*----- PROCESS KEYBOARD INPUT -----*/
 void keyboard_input_callback(GLFWwindow *window, int key, int scancode, int action, int mod) {
-
+	static GLfloat init_time = 0;
+	GLfloat delta_time = 0;
+	GLfloat current_time = glfwGetTime();
 	switch (key)
 	{
 	case GLFW_KEY_ESCAPE:
 		glfwSetWindowShouldClose(window, true);
 	}
 
-	main_camera->process_input(window, key, action, mod);
+	delta_time = current_time - init_time;
+	init_time = current_time;
+	main_camera->process_input(window, key, action, mod, delta_time);
 }
 
 void mouse_input_callback(GLFWwindow* window, double x_pos, double y_pos) {

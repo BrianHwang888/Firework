@@ -14,7 +14,7 @@ class camera
 {
 public:
 	camera();
-	void process_input(GLFWwindow* window, int key, int action, int mods);
+	void process_input(GLFWwindow* window, int key, int action, int mods, GLfloat time);
 	void process_mouse(double x_pos, double y_pos);
 	void update();
 	glm::mat4 get_view_matrix();
@@ -31,6 +31,7 @@ private:
 	float yaw;
 	float pitch;
 	float sensitivity;
+	float speed;
 };
 
 #endif

@@ -1,6 +1,6 @@
 ﻿  camera.cpp
 c:\users\potatoe\source\repos\firework\source\camera.cpp(6): warning C4305: '=': truncation from 'double' to 'float'
-c:\users\potatoe\source\repos\firework\source\camera.cpp(61): warning C4305: '=': truncation from 'double' to 'float'
-c:\users\potatoe\source\repos\firework\source\camera.cpp(78): warning C4244: '+=': conversion from 'double' to 'float', possible loss of data
+c:\users\potatoe\source\repos\firework\source\camera.cpp(62): warning C4305: '=': truncation from 'double' to 'float'
 c:\users\potatoe\source\repos\firework\source\camera.cpp(79): warning C4244: '+=': conversion from 'double' to 'float', possible loss of data
+c:\users\potatoe\source\repos\firework\source\camera.cpp(80): warning C4244: '+=': conversion from 'double' to 'float', possible loss of data
   Firework.vcxproj -> C:\Users\potatoe\source\repos\Firework\Debug\Firework.exe
